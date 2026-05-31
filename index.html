@@ -324,29 +324,12 @@
     <div class="hero-body">
       <img src="static/images/teaser.png" alt="What Matters in Virtual Try-Off? Dual-UNet Diffusion Model For Garment Reconstruction" id="teaser-image" style="width: 100%; height: auto;">
       <h2 class="subtitle has-text-centered">
-          State-of-the-art single-UNet, TryOffDiff and Try-Off-Anyone, vs. our adapted Dual-UNet try-off results. Our Dual-UNet architecture achieves high-quality and realistic garment generation while precisely preserving fine-grained details across diverse datasets.
+          Virtual Try-On lays the rich foundational architectures and techniques to drap-on the garment onto a person image. However, whether they are transferable and which one is effective to the inverse problem, Virtual Try-Off, remain open questions. We find out that Dual-Unet is the direction to go. State-of-the-art single-UNet, TryOffDiff and Try-Off-Anyone, produces artifacts in garment shape, texture, color, and less generalized capabilities. In contrast, our Dual-UNet architecture achieves high-quality and realistic garment generation while precisely preserving fine-grained details across diverse datasets.
       </h2>
     </div>
   </div>
 </section>
 <!-- End teaser image -->
-
-<!-- Paper abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Virtual Try-On (VTON) has seen rapid advancements, providing a strong foundation for generative fashion tasks. However, the inverse problem, Virtual Try-Off (VTOFF)&mdash;aimed at reconstructing the canonical garment from a draped-on image&mdash;remains a less understood domain, distinct from the heavily researched field of VTON. In this work, we seek to establish a robust architectural foundation for VTOFF by studying and adapting various diffusion-based strategies from VTON and general Latent Diffusion Models (LDMs). We focus our investigation on the Dual-UNet Diffusion Model architecture and analyze three axes of design: (i) Generation Backbone: comparing Stable Diffusion variants; (ii) Conditioning: ablating different mask designs, masked/unmasked inputs for image conditioning, and the utility of high-level semantic features; and (iii) Losses and Training Strategies: evaluating the impact of the auxiliary attention-based loss, perceptual objectives and multi-stage curriculum schedules. Extensive experiments reveal trade-offs across various configuration options. Evaluated on VITON-HD and DressCode datasets, our framework achieves state-of-the-art performance with a drop of 9.5% on the primary metric DISTS and competitive performance on LPIPS, FID, KID, and SSIM, providing both stronger baselines and insights to guide future Virtual Try-Off research.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End paper abstract -->
 
 
 <!-- Methodology -->
@@ -358,7 +341,7 @@
         <div class="content has-text-justified">
           <img src="static/images/framework.png" alt="Framework Architecture Diagram" class="blend-img" style="width: 100%; height: auto; margin-bottom: 1.5rem;"/>
           <p>
-            We investigate and optimize the model along three key design axes:
+            In more detail,we investigate and optimize the model along three key design axes:
           </p>
           <ul>
             <li>
