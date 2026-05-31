@@ -324,7 +324,7 @@
     <div class="hero-body">
       <img src="static/images/teaser.png" alt="What Matters in Virtual Try-Off? Dual-UNet Diffusion Model For Garment Reconstruction" id="teaser-image" style="width: 100%; height: auto;">
       <h2 class="subtitle has-text-centered">
-        Dual-UNet Diffusion Model for Virtual Try-Off (VTOFF). Our architecture studies and adapts diffusion-based strategies to reconstruct the canonical flat garment from a draped-on image, achieving state-of-the-art results on VITON-HD and DressCode.
+          State-of-the-art single-UNet, TryOffDiff and Try-Off-Anyone, vs. our adapted Dual-UNet try-off results. Our Dual-UNet architecture achieves high-quality and realistic garment generation while precisely preserving fine-grained details across diverse datasets.
       </h2>
     </div>
   </div>
@@ -389,92 +389,97 @@
         <h2 class="title is-3">Quantitative Results</h2>
         <div class="content has-text-justified">
           <p>
-            Evaluated on the public benchmark datasets <strong>VITON-HD</strong> and <strong>DressCode</strong>, our Dual-UNet Diffusion Model achieves state-of-the-art performance across all major metrics, showing superior preservation of garment texture, structure, and high-frequency details. Notably, we achieve a substantial <strong>9.5% relative drop (improvement)</strong> on the primary perceptual metric DISTS.
+            Quantitative results comparison with other methods on the VITON-HD (HD) dataset and DressCode (DC) for virtual try-off.
           </p>
 
-          <h3 class="title is-4 mt-5">VITON-HD Benchmark</h3>
           <div class="table-container">
             <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
               <thead>
                 <tr>
                   <th>Method</th>
-                  <th>DISTS &darr;</th>
-                  <th>LPIPS &darr;</th>
-                  <th>FID &darr;</th>
-                  <th>KID (&times;10³) &darr;</th>
+                  <th>Resolution</th>
                   <th>SSIM &uarr;</th>
+                  <th>LPIPS &darr;</th>
+                  <th>DISTS &darr;</th>
+                  <th>FID &darr;</th>
+                  <th>KID &darr;</th>
                 </tr>
               </thead>
               <tbody>
+                <!-- VITON-HD 512x384 -->
                 <tr>
-                  <td>Baseline LDM</td>
-                  <td>0.145</td>
-                  <td>0.112</td>
-                  <td>12.45</td>
-                  <td>8.32</td>
-                  <td>0.812</td>
+                  <td>TryOffDiff [1] (HD)</td>
+                  <td>512 &times; 384</td>
+                  <td><strong>75.02</strong></td>
+                  <td><strong>28.52</strong></td>
+                  <td>22.32</td>
+                  <td>24.56</td>
+                  <td>9.52</td>
                 </tr>
                 <tr>
-                  <td>Adapted Try-On SOTA</td>
-                  <td>0.126</td>
-                  <td>0.098</td>
-                  <td>9.86</td>
-                  <td>6.54</td>
-                  <td>0.835</td>
+                  <td>Try-Off-Anyone [2] (HD)</td>
+                  <td>512 &times; 384</td>
+                  <td>72.35</td>
+                  <td>34.08</td>
+                  <td>22.11</td>
+                  <td>11.57</td>
+                  <td>2.01</td>
                 </tr>
                 <tr>
-                  <td><strong>Ours (Dual-UNet)</strong></td>
-                  <td><strong>0.114</strong>strong></td>
-                  <td><strong>0.089</strong></td>
-                  <td><strong>8.42</strong></td>
-                  <td><strong>5.12</strong></td>
-                  <td><strong>0.852</strong></td>
+                  <td><strong>Ours (HD)</strong></td>
+                  <td>512 &times; 384</td>
+                  <td>74.70</td>
+                  <td>28.75</td>
+                  <td><strong>20.10</strong></td>
+                  <td><strong>9.73</strong></td>
+                  <td><strong>1.82</strong></td>
                 </tr>
-              </tbody>
-            </table>
-          </div>
 
-          <h3 class="title is-4 mt-5">DressCode Benchmark</h3>
-          <div class="table-container">
-            <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-              <thead>
+                <!-- VITON-HD 1024x768 -->
                 <tr>
-                  <th>Method</th>
-                  <th>DISTS &darr;</th>
-                  <th>LPIPS &darr;</th>
-                  <th>FID &darr;</th>
-                  <th>KID (&times;10³) &darr;</th>
-                  <th>SSIM &uarr;</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Baseline LDM</td>
-                  <td>0.158</td>
-                  <td>0.125</td>
-                  <td>14.12</td>
-                  <td>9.45</td>
-                  <td>0.795</td>
+                  <td>IGR [3] (HD)</td>
+                  <td>1024 &times; 768</td>
+                  <td><strong>78.95</strong></td>
+                  <td><strong>29.46</strong></td>
+                  <td>20.45</td>
+                  <td>13.14</td>
+                  <td>2.97</td>
                 </tr>
                 <tr>
-                  <td>Adapted Try-On SOTA</td>
-                  <td>0.137</td>
-                  <td>0.106</td>
-                  <td>11.23</td>
-                  <td>7.18</td>
-                  <td>0.821</td>
+                  <td><strong>Ours (HD)</strong></td>
+                  <td>1024 &times; 768</td>
+                  <td>76.04</td>
+                  <td>31.41</td>
+                  <td><strong>19.59</strong></td>
+                  <td><strong>10.69</strong></td>
+                  <td><strong>2.31</strong></td>
+                </tr>
+
+                <!-- DressCode 512x384 -->
+                <tr>
+                  <td>TryOffDiff [1] (DC)&star;</td>
+                  <td>512 &times; 384</td>
+                  <td><strong>80.8</strong></td>
+                  <td><strong>31.6</strong></td>
+                  <td>21.6</td>
+                  <td>17.1</td>
+                  <td>4.7</td>
                 </tr>
                 <tr>
-                  <td><strong>Ours (Dual-UNet)</strong></td>
-                  <td><strong>0.124</strong>strong></td>
-                  <td><strong>0.095</strong></td>
-                  <td><strong>9.54</strong></td>
-                  <td><strong>5.85</strong></td>
-                  <td><strong>0.841</strong></td>
+                  <td><strong>Ours (DC)&star;</strong></td>
+                  <td>512 &times; 384</td>
+                  <td>75.53</td>
+                  <td>32.61</td>
+                  <td><strong>20.85</strong></td>
+                  <td><strong>12.30</strong></td>
+                  <td><strong>2.12</strong></td>
                 </tr>
               </tbody>
             </table>
           </div>
+          <p class="is-size-7 has-text-grey">
+            &star; DISTS is computed at 341 &times; 256 resolution following the TryOffDiff evaluation protocol.
+          </p>
         </div>
       </div>
     </div>
