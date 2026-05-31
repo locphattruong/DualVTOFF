@@ -185,6 +185,15 @@
     ]
   }
   </script>
+  <style>
+      .results-carousel .item img {
+        max-height: 600px;   /* Giới hạn chiều cao tối đa của ảnh là 400px (thay đổi tùy ý) */
+        width: auto;         /* Giữ nguyên tỷ lệ, không làm ảnh bị bóp méo */
+        margin: 0 auto;      /* Căn giữa ảnh trong khung slide */
+        display: block;      /* Loại bỏ khoảng trống thừa bên dưới ảnh */
+        object-fit: contain; /* Đảm bảo toàn bộ nội dung ảnh nằm trọn trong khung */
+      }
+    </style>
 </head>
 <body>
 
