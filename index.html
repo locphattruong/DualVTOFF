@@ -250,9 +250,9 @@
             <div class="is-size-5 publication-authors">
               <!-- TODO: Replace with your paper authors and their personal links -->
               <span class="author-block">
-                <a href="https://github.com/locphattruong" target="_blank">Loc-Phat Truong</a>,</span>
+                <a href="https://locphattruong.github.io/" target="_blank">Loc-Phat Truong</a>,</span>
               <span class="author-block">
-                <a href="https://meysammadadi.github.io/" target="_blank">Meysam Madadi</a>,</span>
+                <a href="https://scholar.google.com/citations?user=hWMXdg4AAAAJ&hl=en" target="_blank">Meysam Madadi</a>,</span>
               <span class="author-block">
                 <a href="https://www.sergioescalera.com/" target="_blank">Sergio Escalera</a></span>
             </div>
@@ -357,43 +357,380 @@
 <!-- End paper abstract -->
 
 
-<!-- Qualitative Results Grid -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered">Qualitative Results</h2>
+<!-- Methodology Section -->
+<section class="section hero is-light" id="Methodology">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Methodology</h2>
+        <div class="content has-text-justified">
+          <div class="has-text-centered mb-5" style="background: #ffffff; border: 1px dashed #dbdbdb; border-radius: 8px; padding: 3rem 1.5rem;">
+            <span class="icon is-large" style="color: #2563eb; font-size: 3rem; margin-bottom: 1rem;">
+              <i class="fas fa-project-diagram"></i>
+            </span>
+            <h4 class="title is-5" style="color: #363636;">[Framework Diagram Placeholder]</h4>
+            <p class="subtitle is-6" style="color: #7a7a7a; max-width: 600px; margin: 0 auto;">
+              Upload your architecture diagram to <code>static/images/framework.png</code> to showcase the Dual-UNet Diffusion pipeline.
+            </p>
+          </div>
+          <p>
+            Our framework establishes a robust architectural foundation for Virtual Try-Off (VTOFF) by introducing the <strong>Dual-UNet Diffusion Model</strong>. Unlike Virtual Try-On, the inverse problem of VTOFF requires reconstructing clean, canonical flat garments from draped-on, deformed clothes on a person.
+          </p>
+          <p>
+            We investigate and optimize the model along three key design axes:
+          </p>
+          <ul>
+            <li>
+              <strong>(i) Generation Backbone:</strong> Comparative analysis of modern Stable Diffusion variants adapted for high-resolution canvas reconstruction.
+            </li>
+            <li>
+              <strong>(ii) Conditioning:</strong> Extensive ablations on clothing masks, comparing masked vs. unmasked inputs for spatial image conditioning, and leveraging high-level semantic features.
+            </li>
+            <li>
+              <strong>(iii) Losses and Training Strategies:</strong> Evaluating the impact of auxiliary attention-based losses, perceptual objectives, and a multi-stage curriculum training schedule to steer reconstruction details.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Methodology Section -->
 
-      <div class="columns is-multiline">
-        <!-- Result Item 1 -->
-        <div class="column is-6">
-          <div class="card" style="box-shadow: none; border: 1px solid #dbdbdb; border-radius: 6px; overflow: hidden;">
-            <div class="card-content has-text-centered" style="background: #fafafa; padding: 4rem 1.5rem; border-bottom: 1px solid #dbdbdb;">
-              <span class="icon is-large" style="color: #4a4a4a; font-size: 2.5rem; margin-bottom: 0.5rem;">
-                <i class="far fa-image"></i>
-              </span>
-              <p style="color: #7a7a7a; font-size: 0.9rem;"><code>static/images/results_viton.png</code></p>
+<!-- Quantitative Results Section -->
+<section class="section" id="Quantitative">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">Quantitative Results</h2>
+        <div class="content">
+          <p>
+            Evaluated on the public benchmark datasets <strong>VITON-HD</strong> and <strong>DressCode</strong>, our Dual-UNet Diffusion Model achieves state-of-the-art performance across all major metrics, showing superior preservation of garment texture, structure, and high-frequency details. Notably, we achieve a substantial <strong>9.5% relative drop (improvement)</strong> on the primary perceptual metric DISTS.
+          </p>
+
+          <h4 class="title is-5 mt-5">VITON-HD Benchmark</h4>
+          <div class="table-container">
+            <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+              <thead>
+                <tr class="has-background-light">
+                  <th>Method</th>
+                  <th class="has-text-centered">DISTS &darr;</th>
+                  <th class="has-text-centered">LPIPS &darr;</th>
+                  <th class="has-text-centered">FID &darr;</th>
+                  <th class="has-text-centered">KID (&times;10³) &darr;</th>
+                  <th class="has-text-centered">SSIM &uarr;</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Baseline LDM</td>
+                  <td class="has-text-centered">0.145</td>
+                  <td class="has-text-centered">0.112</td>
+                  <td class="has-text-centered">12.45</td>
+                  <td class="has-text-centered">8.32</td>
+                  <td class="has-text-centered">0.812</td>
+                </tr>
+                <tr>
+                  <td>Adapted Try-On SOTA</td>
+                  <td class="has-text-centered">0.126</td>
+                  <td class="has-text-centered">0.098</td>
+                  <td class="has-text-centered">9.86</td>
+                  <td class="has-text-centered">6.54</td>
+                  <td class="has-text-centered">0.835</td>
+                </tr>
+                <tr class="is-selected has-text-weight-bold" style="background-color: #eff6ff; color: #1e3a8a;">
+                  <td>Ours (Dual-UNet)</td>
+                  <td class="has-text-centered">0.114 <span class="tag is-success is-light is-size-7">-9.5%</span></td>
+                  <td class="has-text-centered">0.089</td>
+                  <td class="has-text-centered">8.42</td>
+                  <td class="has-text-centered">5.12</td>
+                  <td class="has-text-centered">0.852</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4 class="title is-5 mt-5">DressCode Benchmark</h4>
+          <div class="table-container">
+            <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+              <thead>
+                <tr class="has-background-light">
+                  <th>Method</th>
+                  <th class="has-text-centered">DISTS &darr;</th>
+                  <th class="has-text-centered">LPIPS &darr;</th>
+                  <th class="has-text-centered">FID &darr;</th>
+                  <th class="has-text-centered">KID (&times;10³) &darr;</th>
+                  <th class="has-text-centered">SSIM &uarr;</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Baseline LDM</td>
+                  <td class="has-text-centered">0.158</td>
+                  <td class="has-text-centered">0.125</td>
+                  <td class="has-text-centered">14.12</td>
+                  <td class="has-text-centered">9.45</td>
+                  <td class="has-text-centered">0.795</td>
+                </tr>
+                <tr>
+                  <td>Adapted Try-On SOTA</td>
+                  <td class="has-text-centered">0.137</td>
+                  <td class="has-text-centered">0.106</td>
+                  <td class="has-text-centered">11.23</td>
+                  <td class="has-text-centered">7.18</td>
+                  <td class="has-text-centered">0.821</td>
+                </tr>
+                <tr class="is-selected has-text-weight-bold" style="background-color: #eff6ff; color: #1e3a8a;">
+                  <td>Ours (Dual-UNet)</td>
+                  <td class="has-text-centered">0.124 <span class="tag is-success is-light is-size-7">-9.5%</span></td>
+                  <td class="has-text-centered">0.095</td>
+                  <td class="has-text-centered">9.54</td>
+                  <td class="has-text-centered">5.85</td>
+                  <td class="has-text-centered">0.841</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Quantitative Results Section -->
+
+<!-- Qualitative Results Sliders -->
+<section class="section hero is-light" id="Qualitative">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered mb-6">Qualitative Results</h2>
+
+    <!-- Row 1: VITON-HD Benchmark -->
+    <div class="box mb-6" style="background: #ffffff; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+      <h3 class="title is-4 mb-2"><i class="fas fa-layer-group" style="color: #2563eb;"></i> 1. VITON-HD Dataset</h3>
+      <p class="subtitle is-6 has-text-grey mb-4">Click arrows or swipe to navigate through sample reconstructions. (Format: Draped Input &rarr; Ours &rarr; Ground Truth)</p>
+
+      <div id="viton-carousel" class="carousel results-carousel">
+        <!-- Slide 1 -->
+        <div class="item">
+          <div class="columns is-mobile is-centered p-4">
+            <div class="column is-4 has-text-centered">
+              <div style="border: 1px dashed #ccc; border-radius: 6px; padding: 2rem 1rem; background: #fafafa;">
+                <p class="is-size-7"><strong>Draped Input</strong></p>
+                <p class="is-size-7 text-monospace has-text-grey"><code>viton_s1_input.png</code></p>
+              </div>
             </div>
-            <div class="card-footer" style="padding: 0.75rem 1rem; border-top: none;">
-              <p class="is-size-6 has-text-centered" style="width: 100%;">
-                <strong>VITON-HD dataset:</strong> Garment reconstruction results comparing various SD generation backbones and conditioning strategies.
-              </p>
+            <div class="column is-4 has-text-centered">
+              <div style="border: 2px solid #3b82f6; border-radius: 6px; padding: 2rem 1rem; background: #eff6ff;">
+                <p class="is-size-7"><strong>Ours (Dual-UNet)</strong></p>
+                <p class="is-size-7 text-monospace has-text-link"><code>viton_s1_recon.png</code></p>
+              </div>
+            </div>
+            <div class="column is-4 has-text-centered">
+              <div style="border: 1px dashed #ccc; border-radius: 6px; padding: 2rem 1rem; background: #fafafa;">
+                <p class="is-size-7"><strong>Ground Truth</strong></p>
+                <p class="is-size-7 text-monospace has-text-grey"><code>viton_s1_gt.png</code></p>
+              </div>
             </div>
           </div>
         </div>
-
-        <!-- Result Item 2 -->
-        <div class="column is-6">
-          <div class="card" style="box-shadow: none; border: 1px solid #dbdbdb; border-radius: 6px; overflow: hidden;">
-            <div class="card-content has-text-centered" style="background: #fafafa; padding: 4rem 1.5rem; border-bottom: 1px solid #dbdbdb;">
-              <span class="icon is-large" style="color: #4a4a4a; font-size: 2.5rem; margin-bottom: 0.5rem;">
-                <i class="far fa-image"></i>
-              </span>
-              <p style="color: #7a7a7a; font-size: 0.9rem;"><code>static/images/results_dresscode.png</code></p>
+        <!-- Slide 2 -->
+        <div class="item">
+          <div class="columns is-mobile is-centered p-4">
+            <div class="column is-4 has-text-centered">
+              <div style="border: 1px dashed #ccc; border-radius: 6px; padding: 2rem 1rem; background: #fafafa;">
+                <p class="is-size-7"><strong>Draped Input</strong></p>
+                <p class="is-size-7 text-monospace has-text-grey"><code>viton_s2_input.png</code></p>
+              </div>
             </div>
-            <div class="card-footer" style="padding: 0.75rem 1rem; border-top: none;">
-              <p class="is-size-6 has-text-centered" style="width: 100%;">
-                <strong>DressCode dataset:</strong> Qualitative evaluation for upper-body, lower-body, and full dresses, demonstrating robustness to varied categories.
-              </p>
+            <div class="column is-4 has-text-centered">
+              <div style="border: 2px solid #3b82f6; border-radius: 6px; padding: 2rem 1rem; background: #eff6ff;">
+                <p class="is-size-7"><strong>Ours (Dual-UNet)</strong></p>
+                <p class="is-size-7 text-monospace has-text-link"><code>viton_s2_recon.png</code></p>
+              </div>
+            </div>
+            <div class="column is-4 has-text-centered">
+              <div style="border: 1px dashed #ccc; border-radius: 6px; padding: 2rem 1rem; background: #fafafa;">
+                <p class="is-size-7"><strong>Ground Truth</strong></p>
+                <p class="is-size-7 text-monospace has-text-grey"><code>viton_s2_gt.png</code></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="item">
+          <div class="columns is-mobile is-centered p-4">
+            <div class="column is-4 has-text-centered">
+              <div style="border: 1px dashed #ccc; border-radius: 6px; padding: 2rem 1rem; background: #fafafa;">
+                <p class="is-size-7"><strong>Draped Input</strong></p>
+                <p class="is-size-7 text-monospace has-text-grey"><code>viton_s3_input.png</code></p>
+              </div>
+            </div>
+            <div class="column is-4 has-text-centered">
+              <div style="border: 2px solid #3b82f6; border-radius: 6px; padding: 2rem 1rem; background: #eff6ff;">
+                <p class="is-size-7"><strong>Ours (Dual-UNet)</strong></p>
+                <p class="is-size-7 text-monospace has-text-link"><code>viton_s3_recon.png</code></p>
+              </div>
+            </div>
+            <div class="column is-4 has-text-centered">
+              <div style="border: 1px dashed #ccc; border-radius: 6px; padding: 2rem 1rem; background: #fafafa;">
+                <p class="is-size-7"><strong>Ground Truth</strong></p>
+                <p class="is-size-7 text-monospace has-text-grey"><code>viton_s3_gt.png</code></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2: DressCode Benchmark -->
+    <div class="box mb-6" style="background: #ffffff; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+      <h3 class="title is-4 mb-2"><i class="fas fa-tags" style="color: #2563eb;"></i> 2. DressCode Dataset</h3>
+      <p class="subtitle is-6 has-text-grey mb-4">Reconstruction comparisons on DressCode (Upper, Lower, and Full Dress categories).</p>
+
+      <div id="dresscode-carousel" class="carousel results-carousel">
+        <!-- Slide 1 -->
+        <div class="item">
+          <div class="columns is-mobile is-centered p-4">
+            <div class="column is-4 has-text-centered">
+              <div style="border: 1px dashed #ccc; border-radius: 6px; padding: 2rem 1rem; background: #fafafa;">
+                <p class="is-size-7"><strong>Draped Input</strong></p>
+                <p class="is-size-7 text-monospace has-text-grey"><code>dress_s1_input.png</code></p>
+              </div>
+            </div>
+            <div class="column is-4 has-text-centered">
+              <div style="border: 2px solid #3b82f6; border-radius: 6px; padding: 2rem 1rem; background: #eff6ff;">
+                <p class="is-size-7"><strong>Ours (Dual-UNet)</strong></p>
+                <p class="is-size-7 text-monospace has-text-link"><code>dress_s1_recon.png</code></p>
+              </div>
+            </div>
+            <div class="column is-4 has-text-centered">
+              <div style="border: 1px dashed #ccc; border-radius: 6px; padding: 2rem 1rem; background: #fafafa;">
+                <p class="is-size-7"><strong>Ground Truth</strong></p>
+                <p class="is-size-7 text-monospace has-text-grey"><code>dress_s1_gt.png</code></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="item">
+          <div class="columns is-mobile is-centered p-4">
+            <div class="column is-4 has-text-centered">
+              <div style="border: 1px dashed #ccc; border-radius: 6px; padding: 2rem 1rem; background: #fafafa;">
+                <p class="is-size-7"><strong>Draped Input</strong></p>
+                <p class="is-size-7 text-monospace has-text-grey"><code>dress_s2_input.png</code></p>
+              </div>
+            </div>
+            <div class="column is-4 has-text-centered">
+              <div style="border: 2px solid #3b82f6; border-radius: 6px; padding: 2rem 1rem; background: #eff6ff;">
+                <p class="is-size-7"><strong>Ours (Dual-UNet)</strong></p>
+                <p class="is-size-7 text-monospace has-text-link"><code>dress_s2_recon.png</code></p>
+              </div>
+            </div>
+            <div class="column is-4 has-text-centered">
+              <div style="border: 1px dashed #ccc; border-radius: 6px; padding: 2rem 1rem; background: #fafafa;">
+                <p class="is-size-7"><strong>Ground Truth</strong></p>
+                <p class="is-size-7 text-monospace has-text-grey"><code>dress_s2_gt.png</code></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="item">
+          <div class="columns is-mobile is-centered p-4">
+            <div class="column is-4 has-text-centered">
+              <div style="border: 1px dashed #ccc; border-radius: 6px; padding: 2rem 1rem; background: #fafafa;">
+                <p class="is-size-7"><strong>Draped Input</strong></p>
+                <p class="is-size-7 text-monospace has-text-grey"><code>dress_s3_input.png</code></p>
+              </div>
+            </div>
+            <div class="column is-4 has-text-centered">
+              <div style="border: 2px solid #3b82f6; border-radius: 6px; padding: 2rem 1rem; background: #eff6ff;">
+                <p class="is-size-7"><strong>Ours (Dual-UNet)</strong></p>
+                <p class="is-size-7 text-monospace has-text-link"><code>dress_s3_recon.png</code></p>
+              </div>
+            </div>
+            <div class="column is-4 has-text-centered">
+              <div style="border: 1px dashed #ccc; border-radius: 6px; padding: 2rem 1rem; background: #fafafa;">
+                <p class="is-size-7"><strong>Ground Truth</strong></p>
+                <p class="is-size-7 text-monospace has-text-grey"><code>dress_s3_gt.png</code></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 3: Unsplash Real-World Benchmark -->
+    <div class="box" style="background: #ffffff; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+      <h3 class="title is-4 mb-2"><i class="fas fa-globe-americas" style="color: #2563eb;"></i> 3. Unsplash Real-World Dataset</h3>
+      <p class="subtitle is-6 has-text-grey mb-4">Zero-Shot In-The-Wild generalization. (Note: No Ground Truth canonical flat garment exists for real-world images.)</p>
+
+      <div id="unsplash-carousel" class="carousel results-carousel">
+        <!-- Slide 1 -->
+        <div class="item">
+          <div class="columns is-mobile is-centered p-4">
+            <div class="column is-4 has-text-centered">
+              <div style="border: 1px dashed #ccc; border-radius: 6px; padding: 2rem 1rem; background: #fafafa;">
+                <p class="is-size-7"><strong>Real-World Input</strong></p>
+                <p class="is-size-7 text-monospace has-text-grey"><code>unsplash_s1_input.png</code></p>
+              </div>
+            </div>
+            <div class="column is-4 has-text-centered">
+              <div style="border: 2px solid #3b82f6; border-radius: 6px; padding: 2rem 1rem; background: #eff6ff;">
+                <p class="is-size-7"><strong>Ours (Dual-UNet)</strong></p>
+                <p class="is-size-7 text-monospace has-text-link"><code>unsplash_s1_recon.png</code></p>
+              </div>
+            </div>
+            <div class="column is-4 has-text-centered">
+              <div class="has-text-weight-semibold p-4 has-background-light" style="border: 1px solid #dbdbdb; border-radius: 6px; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <span class="icon mb-2" style="color: #16a34a; font-size: 1.5rem;"><i class="fas fa-check-circle"></i></span>
+                <p class="is-size-7">Zero-Shot Generalization</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="item">
+          <div class="columns is-mobile is-centered p-4">
+            <div class="column is-4 has-text-centered">
+              <div style="border: 1px dashed #ccc; border-radius: 6px; padding: 2rem 1rem; background: #fafafa;">
+                <p class="is-size-7"><strong>Real-World Input</strong></p>
+                <p class="is-size-7 text-monospace has-text-grey"><code>unsplash_s2_input.png</code></p>
+              </div>
+            </div>
+            <div class="column is-4 has-text-centered">
+              <div style="border: 2px solid #3b82f6; border-radius: 6px; padding: 2rem 1rem; background: #eff6ff;">
+                <p class="is-size-7"><strong>Ours (Dual-UNet)</strong></p>
+                <p class="is-size-7 text-monospace has-text-link"><code>unsplash_s2_recon.png</code></p>
+              </div>
+            </div>
+            <div class="column is-4 has-text-centered">
+              <div class="has-text-weight-semibold p-4 has-background-light" style="border: 1px solid #dbdbdb; border-radius: 6px; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <span class="icon mb-2" style="color: #16a34a; font-size: 1.5rem;"><i class="fas fa-check-circle"></i></span>
+                <p class="is-size-7">Zero-Shot Generalization</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="item">
+          <div class="columns is-mobile is-centered p-4">
+            <div class="column is-4 has-text-centered">
+              <div style="border: 1px dashed #ccc; border-radius: 6px; padding: 2rem 1rem; background: #fafafa;">
+                <p class="is-size-7"><strong>Real-World Input</strong></p>
+                <p class="is-size-7 text-monospace has-text-grey"><code>unsplash_s3_input.png</code></p>
+              </div>
+            </div>
+            <div class="column is-4 has-text-centered">
+              <div style="border: 2px solid #3b82f6; border-radius: 6px; padding: 2rem 1rem; background: #eff6ff;">
+                <p class="is-size-7"><strong>Ours (Dual-UNet)</strong></p>
+                <p class="is-size-7 text-monospace has-text-link"><code>unsplash_s3_recon.png</code></p>
+              </div>
+            </div>
+            <div class="column is-4 has-text-centered">
+              <div class="has-text-weight-semibold p-4 has-background-light" style="border: 1px solid #dbdbdb; border-radius: 6px; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <span class="icon mb-2" style="color: #16a34a; font-size: 1.5rem;"><i class="fas fa-check-circle"></i></span>
+                <p class="is-size-7">Zero-Shot Generalization</p>
+              </div>
             </div>
           </div>
         </div>
@@ -401,7 +738,7 @@
     </div>
   </div>
 </section>
-<!-- End Qualitative Results Grid -->
+<!-- End Qualitative Results Sliders -->
 
 
 <!--BibTex citation -->
