@@ -369,7 +369,7 @@
         <h2 class="title is-3">Quantitative Results</h2>
         <div class="content has-text-justified">
           <p>
-            Quantitative results comparison with other methods on the VITON-HD (HD) dataset and DressCode (DC) for virtual try-off.
+            Quantitatively evaluated on VITON-HD and DressCode datasets, our framework achieves state-of-the-art performance with a drop of 9.5% on the primary metric DISTS and competitive performance on LPIPS, FID, KID, and SSIM, providing both stronger baselines and insights to guide future Virtual Try-Off research.
           </p>
 
           <div class="table-container">
@@ -471,24 +471,60 @@
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
-      <h2 class="title is-3 has-text-centered">Qualitative Results - VITON-HD Dataset</h2>
+      <h2 class="title is-3 has-text-centered">Qualitative Comparison at 512x384 resolution - Studio-condition & In-the-wild Samples</h2>
       <div id="results-carousel-viton" class="carousel results-carousel">
         <div class="item">
           <img src="static/images/viton_result1.png" alt="VITON-HD qualitative comparison sample 1" loading="lazy"/>
           <h2 class="subtitle has-text-centered">
-            VITON-HD Sample 1: Reconstruction of canonical flat garment from draped input.
+            Studio-condition Testing Samples, which the model was trained with.
           </h2>
         </div>
         <div class="item">
           <img src="static/images/viton_result2.png" alt="VITON-HD qualitative comparison sample 2" loading="lazy"/>
           <h2 class="subtitle has-text-centered">
-            VITON-HD Sample 2: Reconstruction of canonical flat garment from draped input.
+            Studio-condition Testing Samples, which the model was trained with.
           </h2>
         </div>
         <div class="item">
           <img src="static/images/viton_result3.png" alt="VITON-HD qualitative comparison sample 3" loading="lazy"/>
           <h2 class="subtitle has-text-centered">
-            VITON-HD Sample 3: Reconstruction of canonical flat garment from draped input.
+            Studio-condition Testing Samples, which the model was trained with.
+          </h2>
+        </div>
+        <div class="item">
+          <img src="static/images/viton_result4.png" alt="VITON-HD qualitative comparison sample 4" loading="lazy"/>
+          <h2 class="subtitle has-text-centered">
+            Studio-condition Testing Samples, which the model was trained with.
+          </h2>
+        </div>
+        <div class="item">
+          <img src="static/images/viton_result5.png" alt="VITON-HD qualitative comparison sample 5" loading="lazy"/>
+          <h2 class="subtitle has-text-centered">
+            Studio-condition Testing Samples, which the model was trained with.
+          </h2>
+        </div>
+        <div class="item">
+          <img src="static/images/unsplash_result1.png" alt="Unsplash real-world generalization sample 1" loading="lazy"/>
+          <h2 class="subtitle has-text-centered">
+            Unsplash Real-World Samples: Zero-shot generalization in-the-wild (No Ground Truth canonical flat garment exists).
+          </h2>
+        </div>
+        <div class="item">
+          <img src="static/images/unsplash_result2.png" alt="Unsplash real-world generalization sample 2" loading="lazy"/>
+          <h2 class="subtitle has-text-centered">
+            Unsplash Real-World Samples: Zero-shot generalization in-the-wild (No Ground Truth canonical flat garment exists).
+          </h2>
+        </div>
+        <div class="item">
+          <img src="static/images/unsplash_result3.png" alt="Unsplash real-world generalization sample 3" loading="lazy"/>
+          <h2 class="subtitle has-text-centered">
+            Unsplash Real-World Samples: Zero-shot generalization in-the-wild (No Ground Truth canonical flat garment exists).
+          </h2>
+        </div>
+        <div class="item">
+          <img src="static/images/unsplash_result4.png" alt="Unsplash real-world generalization sample 4" loading="lazy"/>
+          <h2 class="subtitle has-text-centered">
+            Unsplash Real-World Samples: Zero-shot generalization in-the-wild (No Ground Truth canonical flat garment exists).
           </h2>
         </div>
       </div>
@@ -499,52 +535,18 @@
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
-      <h2 class="title is-3 has-text-centered">Qualitative Results - DressCode Dataset</h2>
+      <h2 class="title is-3 has-text-centered">More Qualitative Results at 1024x768 resolution</h2>
       <div id="results-carousel-dresscode" class="carousel results-carousel">
         <div class="item">
-          <img src="static/images/dresscode_result1.png" alt="DressCode qualitative comparison sample 1" loading="lazy"/>
+          <img src="static/images/hd_result1.png" alt="DressCode qualitative comparison sample 1" loading="lazy"/>
           <h2 class="subtitle has-text-centered">
-            DressCode Sample 1: Reconstruction of canonical flat garment for different clothing categories.
+            High Resolution Sample 1: Model is progressively trained from low resolution to higher resolution.
           </h2>
         </div>
         <div class="item">
-          <img src="static/images/dresscode_result2.png" alt="DressCode qualitative comparison sample 2" loading="lazy"/>
+          <img src="static/images/hd_result2.png" alt="DressCode qualitative comparison sample 2" loading="lazy"/>
           <h2 class="subtitle has-text-centered">
-            DressCode Sample 2: Reconstruction of canonical flat garment for different clothing categories.
-          </h2>
-        </div>
-        <div class="item">
-          <img src="static/images/dresscode_result3.png" alt="DressCode qualitative comparison sample 3" loading="lazy"/>
-          <h2 class="subtitle has-text-centered">
-            DressCode Sample 3: Reconstruction of canonical flat garment for different clothing categories.
-          </h2>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="hero is-small mb-6">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3 has-text-centered">Qualitative Results - Unsplash Real-World Dataset</h2>
-      <div id="results-carousel-unsplash" class="carousel results-carousel">
-        <div class="item">
-          <img src="static/images/unsplash_result1.png" alt="Unsplash real-world generalization sample 1" loading="lazy"/>
-          <h2 class="subtitle has-text-centered">
-            Unsplash Real-World Sample 1: Zero-shot generalization in-the-wild (No Ground Truth canonical flat garment exists).
-          </h2>
-        </div>
-        <div class="item">
-          <img src="static/images/unsplash_result2.png" alt="Unsplash real-world generalization sample 2" loading="lazy"/>
-          <h2 class="subtitle has-text-centered">
-            Unsplash Real-World Sample 2: Zero-shot generalization in-the-wild (No Ground Truth canonical flat garment exists).
-          </h2>
-        </div>
-        <div class="item">
-          <img src="static/images/unsplash_result3.png" alt="Unsplash real-world generalization sample 3" loading="lazy"/>
-          <h2 class="subtitle has-text-centered">
-            Unsplash Real-World Sample 3: Zero-shot generalization in-the-wild (No Ground Truth canonical flat garment exists).
+            High Resolution Sample 2: Model is progressively trained from low resolution to higher resolution.
           </h2>
         </div>
       </div>
@@ -567,7 +569,6 @@
       <pre id="bibtex-code"><code>@inproceedings{truong2026matters,
   title={What Matters in Virtual Try-Off? Dual-UNet Diffusion Model For Garment Reconstruction},
   author={Truong, Loc-Phat and Madadi, Meysam and Escalera, Sergio},
-  booktitle={Proceedings of the International Conference on Pattern Recognition (ICPR)},
   year={2026},
   eprint={2604.08716},
   archivePrefix={arXiv},
