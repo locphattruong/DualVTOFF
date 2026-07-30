@@ -122,12 +122,14 @@ function setupVideoCarouselAutoplay() {
 $(document).ready(function() {
     // Check for click events on the navbar burger icon
 
+    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     var options = {
 		slidesToScroll: 1,
 		slidesToShow: 1,
 		loop: true,
 		infinite: true,
-		autoplay: true,
+		autoplay: !prefersReducedMotion,
 		autoplaySpeed: 5000,
     }
 
