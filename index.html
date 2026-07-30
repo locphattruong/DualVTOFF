@@ -362,9 +362,48 @@
               <strong>(iii) Losses and Training Strategies:</strong> Evaluating the impact of auxiliary attention-based losses, perceptual objectives, and a multi-stage curriculum training schedule to steer reconstruction details.
             </li>
           </ul>
-          <p class="has-text-centered has-text-grey" style="font-style: italic; margin-bottom: 2rem;">
-            Key takeaways and insights are coming soon.
-          </p>
+          <section class="key-insights" aria-labelledby="key-insights-title">
+            <div class="key-insights-heading">
+              <span class="key-insights-kicker">Poster takeaways</span>
+              <h3 id="key-insights-title">What actually matters in VTOFF?</h3>
+            </div>
+
+            <div class="key-insights-grid">
+              <article class="key-insight">
+                <span class="key-insight-number" aria-hidden="true">01</span>
+                <h4>Attention alignment protects texture</h4>
+                <p>
+                  Leffa attention-alignment regularization maps worn regions to their canonical
+                  positions, reducing logo distortion and texture warping.
+                </p>
+              </article>
+
+              <article class="key-insight">
+                <span class="key-insight-number" aria-hidden="true">02</span>
+                <h4>A phased curriculum prevents collapse</h4>
+                <p>
+                  Joint end-to-end training destabilizes the two UNets. We first warm up
+                  CreationNet, then strengthen alignment, and finally refine fine-grained
+                  conditioning.
+                </p>
+              </article>
+
+              <article class="key-insight">
+                <span class="key-insight-number" aria-hidden="true">03</span>
+                <h4>Backbone and masking choices matter</h4>
+                <p>
+                  SDXL with a base diffusion model is the strongest backbone. Dilated masks
+                  improve local conditioning, while masking has little effect on global guidance.
+                </p>
+              </article>
+            </div>
+
+            <p class="key-insights-summary">
+              <strong>Overall:</strong> a carefully balanced Dual-UNet SDXL, attention
+              regularization, and staged training deliver the best combination of garment
+              structure, fine detail, and generalization.
+            </p>
+          </section>
           <img src="static/images/framework.png" alt="Framework Architecture Diagram" class="blend-img" style="width: 100%; height: auto; margin-bottom: 1.5rem;"/>
           <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem auto; font-size: 0.95rem; color: #64748b; line-height: 1.6;">
               Our final Dual-UNet architecture.
@@ -474,6 +513,11 @@
           </div>
           <p class="is-size-7 has-text-grey">
             &star; DISTS is computed at 341 &times; 256 resolution following the TryOffDiff evaluation protocol.
+          </p>
+          <p class="metric-insight">
+            <strong>Why DISTS is our primary metric:</strong> SSIM and LPIPS can heavily
+            penalize harmless garment-length variations caused by occlusion while underweighting
+            the fine texture loss that is critical for faithful reconstruction.
           </p>
         </div>
       </div>
